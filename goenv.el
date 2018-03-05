@@ -62,7 +62,9 @@ This is usually the base name of `goenv-temporary-env'.")
         goenv-temporary-env-name (file-name-nondirectory directory))
   (goenv-deactivate)
   (setq goenv-old-process-environment process-environment)
-  (let ((path-items (split-string (getenv "GOPATH") ":")))
+  (let ((path-items (split-string (if (getenv "GOPATH")
+                                      (setenv "GOPATH" "~/go"))
+                                  (getenv "GOPATH") ":")))
     (setq process-environment (append
                                (list
                                 (format "GOPATH=%s"

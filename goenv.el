@@ -4,6 +4,7 @@
 
 ;; Author: Mephis Pheies <mephistommm@gmail.com>
 ;; URL: https://github.com/MephistoMMM/goenv
+;; Package-Version: 20180305.1100
 ;; Version: 1.0
 ;; Keywords: golang, environment, tools
 
@@ -35,6 +36,7 @@
   :prefix "goenv-"
   :group 'languages)
 
+
 (defvar goenv-temporary-env nil
   "The current go template workspace environment.
 
@@ -61,10 +63,13 @@ This is usually the base name of `goenv-temporary-env'.")
   (setq directory (expand-file-name directory)
         goenv-temporary-env-name (file-name-nondirectory directory))
   (goenv-deactivate)
+
+  (if (getenv "GOPATH")
+    nil
+    (setenv "GOPATH" "~/go"))
+
   (setq goenv-old-process-environment process-environment)
-  (let ((path-items (split-string (if (getenv "GOPATH")
-                                      (setenv "GOPATH" "~/go"))
-                                  (getenv "GOPATH") ":")))
+  (let ((path-items (split-string (getenv "GOPATH"))))
     (setq process-environment (append
                                (list
                                 (format "GOPATH=%s"

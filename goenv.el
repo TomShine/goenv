@@ -56,7 +56,7 @@ This is usually the base name of `goenv-temporary-env'.")
                                      ("[" goenv-temporary-env-name "] "))
   "How `goenv-mode' will indicate the current environment in the mode line.")
 
-;;;###autoload
+;; autoload
 (defun goenv-activate (directory)
   "Activate the go temporary workspace environment in DRECTORY."
   (interactive "DActivate goenv: ")
@@ -83,7 +83,7 @@ This is usually the base name of `goenv-temporary-env'.")
   (setq goenv-temporary-env t)
   )
 
-;;;###autoload
+;; autoload
 (defun goenv-deactivate ()
   "Deactivate any current go temporary workspace environment."
   (interactive)

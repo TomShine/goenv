@@ -1,10 +1,10 @@
 ;;; goenv.el --- provide funcs and mode for creating temporary workspace environment
 
-;; Copyright (C) 2017-2018 Mephis Pheies <mephistommm@gmail.com>
+;; Copyright (C) 2017-2019 Tom Shine<shangzongyu1111@gmail.com>
 
-;; Author: Mephis Pheies <mephistommm@gmail.com>
-;; URL: https://github.com/MephistoMMM/goenv
-;; Package-Version: 20180305.1100
+;; Author: TomShine <shangzongyu1111@gmail.com>
+;; URL: https://github.com/shangzongyu/goenv
+;; Package-Version: 20190430.0100
 ;; Version: 1.0
 ;; Keywords: golang, environment, tools
 
@@ -53,7 +53,7 @@ This is usually the base name of `goenv-temporary-env'.")
   "The old process environment before the last activate.")
 
 (defvar goenv-mode-line-indicator '(goenv-temporary-env-name
-                                     ("[" goenv-temporary-env-name "] "))
+                                    ("[" goenv-temporary-env-name "] "))
   "How `goenv-mode' will indicate the current environment in the mode line.")
 
 ;; autoload
@@ -65,7 +65,7 @@ This is usually the base name of `goenv-temporary-env'.")
   (goenv-deactivate)
 
   (if (getenv "GOPATH")
-    nil
+      nil
     (setenv "GOPATH" "~/go"))
 
   (setq goenv-old-process-environment process-environment)
